@@ -4,7 +4,7 @@ package April_2021;
 
         //丑数就是只包含质因数2，3 和/或5的正整数。
 
-public class Ugly_Number {
+public class Ugly_NumberI {
     public boolean isUgly(int n) {
 
         if(n < 1){
