@@ -15,7 +15,7 @@ public class ClimbStairs {
             temp = a + b;
             a = b;
             b = temp;
-        }
+        }//滚动数组
         return b;
     }
 }
