@@ -11,20 +11,20 @@ public class singleNumber3 {
     public int[] singleNumber(int[] nums) {
         if(nums.length == 2)
             return nums;
-        int[] res = new int[2];
+        int num1 = 0, num2 = 0;
         Arrays.sort(nums);
         for(int i = 0; i < nums.length - 1; i++){
             if(nums[i] == nums[i+1]){
                 i++;
             }else if(i % 2 == 0){
-                res[0] = nums[i];
+                num1 = nums[i];
             }else if(i % 2 != 0){
-                res[1] = nums[i];
+                num2 = nums[i];
             }
             if(i == nums.length - 2){
-                res[1] = nums[i+1];
+                num2 = nums[i+1];
             }
         }
-        return res;
+        return new int[]{num1, num2};
     }
 }
