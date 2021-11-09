@@ -24,4 +24,33 @@ public class strStr_28 {
         }
         return -1;
     }
+
+    //KMP算法
+    public int strStr2(String haystack, String needle) {
+        if(needle.length() == 0){
+            return 0;
+        }
+        int[] next = new int[needle.length()];
+        for(int i = 1, j = 0; i < needle.length(); i++){
+            while(j > 0 && needle.charAt(i) != needle.charAt(j)){
+                j = next[j - 1];
+            }
+            if(needle.charAt(i) == needle.charAt(j)){
+                j++;
+            }
+            next[i] = j;
+        }
+        for(int i = 0, j = 0; i < haystack.length();i++){
+            while(j > 0 && haystack.charAt(i) != needle.charAt(j)){
+                j = next[j - 1];
+            }
+            if(haystack.charAt(i) == needle.charAt(j)){
+                j++;
+            }
+            if(j == needle.length()){
+                return i - needle.length() + 1;
+            }
+        }
+        return -1;
+    }
 }
