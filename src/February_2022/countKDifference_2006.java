@@ -8,7 +8,11 @@ package February_2022;
     如果 x < 0, 那么值为-x.
  */
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class countKDifference_2006 {
+    //暴力解法
     public int countKDifference(int[] nums, int k) {
         int res = 0;
         for(int i = 0; i < nums.length; i++){
@@ -17,6 +21,22 @@ public class countKDifference_2006 {
                     res++;
                 }
             }
+        }
+        return res;
+    }
+
+    // Hashmap
+    public int countKDifference2(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int res = 0;
+        for(int num : nums){
+            if(map.containsKey(num + k)){
+                res += map.get(num + k);
+            }
+            if(map.containsKey(num - k)){
+                res += map.get(num - k);
+            }
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
         return res;
     }
