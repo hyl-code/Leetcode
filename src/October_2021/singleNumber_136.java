@@ -16,4 +16,12 @@ public class singleNumber_136 {
         }
         return nums[nums.length - 1];
     }
+
+    //位运算
+    public int singleNumber1(int[] nums) {
+        for(int i = 1; i < nums.length; i++){
+            nums[0] ^= nums[i];
+        }
+        return nums[0];
+    }
 }
