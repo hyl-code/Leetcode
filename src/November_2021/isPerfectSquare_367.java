@@ -23,4 +23,16 @@ public class isPerfectSquare_367 {
         }
         return false;
     }
+
+    //暴力法
+    public boolean isPerfectSquare2(int num) {
+        int n = 1;
+        while(num / n >= n){
+            if(num % n == 0 && num / n == n){
+                return true;
+            }
+            n++;
+        }
+        return false;
+    }
 }
