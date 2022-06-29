@@ -13,10 +13,10 @@ public class searchRange_34 {
         }
         int left = 0, right = nums.length - 1;
         while(left < right && (nums[left] != target || nums[right]!= target)){
-            if(nums[left] < target && left < nums.length - 1){
+            if(nums[left] < target){
                 left++;
             }
-            if(nums[right] > target && right > 0){
+            if(nums[right] > target){
                 right--;
             }
         }
