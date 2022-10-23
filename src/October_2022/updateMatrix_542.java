@@ -1,47 +1,39 @@
 package October_2022;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+/*
+    给定一个由 0 和 1 组成的矩阵 mat, 请输出一个大小相同的矩阵, 其中每一个格子是 mat 中对应位置元素到最近的 0 的距离.
+    两个相邻元素间的距离为 1.
+ */
 public class updateMatrix_542 {
+    //左, 右, 上, 下
+    static int[][] dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     public int[][] updateMatrix(int[][] mat) {
         int m = mat.length;
         int n = mat[0].length;
         int[][] res = new int[m][n];
-        //初始化
+        boolean[][] visited = new boolean[m][n];
+        Queue<int[]> queue = new LinkedList<int[]>();
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
                 if(mat[i][j] == 0){
-                    res[i][j] = 0;
-                }else{
-                    //设为可能的最大值
-                    res[i][j] = m + n;
+                    queue.offer(new int[]{i, j});
+                    visited[i][j] = true;
                 }
             }
         }
-        boolean flag = true;
-        //本次循环是否有更新数据
-        while(flag){
-            flag = false;
-            for(int i = 0; i < m; i++){
-                for(int j = 0; j < n; j++){
-                    //单元值为 1 时, 计算距离
-                    if(mat[i][j] == 1){
-                        int temp = res[i][j];
-                        //左
-                        if(i > 0){
-                            res[i][j] = Math.min(res[i][j], res[i - 1][j] + 1);
-                        }
-                        //右
-                        if(i < m - 1){
-                            res[i][j] = Math.min(res[i][j], res[i + 1][j] + 1);
-                        }
-                        //上
-                        if(j > 0){
-                            res[i][j] = Math.min(res[i][j], res[i][j - 1] + 1);
-                        }
-                        //下
-                        if(temp != res[i][j]){
-                            flag = true;
-                        }
-                    }
+        while(!queue.isEmpty()){
+            int[] temp = queue.poll();
+            int i = temp[0], j = temp[1];
+            for(int k = 0; k < dir.length; k++){
+                int ni = i + dir[k][0];
+                int nj = j + dir[k][1];
+                if(ni >= 0 && ni < m && nj >= 0 && nj < n && !visited[ni][nj]){
+                    res[ni][nj] = res[i][j] + 1;
+                    queue.offer(new int[]{ni, nj});
+                    visited[ni][nj] = true;
                 }
             }
         }
