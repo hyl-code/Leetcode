@@ -17,7 +17,7 @@ public class combine_77 {
 
     public void getCombine(int n, int k, int start, List<Integer> list){
         if(k == 0){
-            //如果为 0 则代表 list 中已经存入 k 个数, 将 list 存入结果 res 中
+            //如果为 0 则代表 list 中已经存入 k 个数, 将 list 拷贝入结果 res 中
             res.add(new ArrayList<>(list));
             return;
         }
