@@ -9,6 +9,7 @@ package November_2022;
  */
 public class reachNumber_754 {
     public int reachNumber(int target) {
+        //对称性
         target = Math.abs(target);
         int res = 0;
         while(target > 0){
