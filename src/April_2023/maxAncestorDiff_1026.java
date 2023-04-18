@@ -26,6 +26,7 @@ public class maxAncestorDiff_1026 {
         if(node == null){
             return 0;
         }
+        //根据左右节点依次延伸, 保护最大最小值
         max = Math.max(max, node.val);
         min = Math.min(min, node.val);
         if(node.left == null && node.right == null){
