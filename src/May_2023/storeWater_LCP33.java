@@ -11,6 +11,7 @@ import java.util.Arrays;
     注意：实际蓄水量达到或超过最低蓄水量, 即完成蓄水要求.
  */
 public class storeWater_LCP33 {
+    //贪心
     public int storeWater(int[] bucket, int[] vat) {
         int maxk = Arrays.stream(vat).max().getAsInt();
         if(maxk == 0){
