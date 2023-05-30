@@ -17,6 +17,7 @@ public class delNodes_1110 {
         for(int del : to_delete){
             set.add(del);
         }
+        // root 节点特殊情况
         if(!set.contains(root.val)){
             list.add(root);
         }
