@@ -8,9 +8,11 @@ package September_2023;
     能则返回 true, 不能则返回 false.
  */
 public class canPlaceFlowers_605 {
+    // 贪心
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int i = 0;
         int len = flowerbed.length;
+        // 能种就种
         while(i < len){
             if(flowerbed[i] == 0){
                 if(i == len - 1){
@@ -26,6 +28,6 @@ public class canPlaceFlowers_605 {
                 i += 2;
             }
         }
-        return n <= 0;
+        return n <= 0;      // 若 n <= 0, 则表示已种完
     }
 }
