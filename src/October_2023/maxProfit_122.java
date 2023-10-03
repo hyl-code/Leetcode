@@ -13,8 +13,8 @@ public class maxProfit_122 {
         int[][] f = new int[n + 1][2];
         f[0][1] = Integer.MIN_VALUE;
         for(int i = 0; i < n; i++){
-            f[i + 1][0] = Math.max(f[i][0], f[i][1] + prices[i]);
-            f[i + 1][1] = Math.max(f[i][1], f[i][0] - prices[i]);
+            f[i + 1][0] = Math.max(f[i][0], f[i][1] + prices[i]);       // dp[i][0] 表示第 i 天交易完后手里没有股票的最大利润
+            f[i + 1][1] = Math.max(f[i][1], f[i][0] - prices[i]);       // dp[i][1] 表示第 i 天交易完后手里持有一支股票的最大利润
         }
         return f[n][0];
     }
